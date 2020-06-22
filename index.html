@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <h1 class="jumbotron">Co-Tracker</h1>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="six columns">
+          <form>
+            <div class="row">
+              <div class="six columns">
+                <label for="addressInput">Your address</label>
+                <input
+                  class="u-full-width"
+                  type="email"
+                  placeholder="123 Virus Lane"
+                  id="addressInput"
+                />
+              </div>
+              <div class="six columns">
+                <label for="exampleRecipientInput">Covid Status</label>
+                <select class="u-full-width" id="exampleRecipientInput">
+                  <option value="Option 1">Positive</option>
+                  <option value="Option 2">Negative</option>
+                  <option value="Option 3">Untested</option>
+                </select>
+              </div>
+            </div>
+            <!-- <label for="exampleMessage">Message</label>
+            <textarea
+              class="u-full-width"
+              placeholder="Hi Dave …"
+              id="exampleMessage"
+            ></textarea> -->
+            <label class="emailList">
+              <input type="checkbox" />
+              <span class="label-body">Email me updates from Co-Tracker</span>
+            </label>
+            <input class="button-primary" type="submit" value="Submit" />
+          </form>
+        </div>
+
+        <div class="six columns">
+            <div class="six columns">
+                <h4>
+                  Resources
+                </h4>
+                <ul>
+                  <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">Center for Disease Control Resources</li>
+                  <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">World Health Organization Resources</li>
+                  <li><a href="https://www.idsociety.org/public-health/COVID-19-Resource-Center/covid19-expanded-resource-center/#Workplace">
+                Infectious Disease Society of America Resources</li>
+                </ul>
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <img class="map" src="map.png">
+        </div>
+        <div class="six columns">
+          <img src="twitter.png" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

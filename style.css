@@ -1,0 +1,10 @@
+.jumbotron {
+  padding: 30px; /* fills out the jumbotron */
+  background-color: #111;
+  text-align: center;
+  color: white;
+}
+
+.map {
+  width: 100%;
+}
