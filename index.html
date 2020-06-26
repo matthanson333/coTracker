@@ -16,34 +16,18 @@
           <form>
             <div class="row">
               <div class="six columns">
-                <label for="addressInput">Your address</label>
-                <input
-                  class="u-full-width"
-                  type="email"
-                  placeholder="123 Virus Lane"
-                  id="addressInput"
-                />
+                <label for="cityInput">City</label>
+                <input type="text" class="u-half-width" id="cityInput" placeholder="Your City Here">
+                <label for="countyInput">County</label>
+                <input type="text" class="u-half-width" id="countyInput" placeholder="Your County Here">
+                <label for="stateInput">State</label>
+                <input type="text" class="u-half-width" id="stateInput" placeholder="Your State Here">
+                
               </div>
-              <div class="six columns">
-                <label for="exampleRecipientInput">Covid Status</label>
-                <select class="u-full-width" id="exampleRecipientInput">
-                  <option value="Option 1">Positive</option>
-                  <option value="Option 2">Negative</option>
-                  <option value="Option 3">Untested</option>
-                </select>
-              </div>
+              
             </div>
-            <!-- <label for="exampleMessage">Message</label>
-            <textarea
-              class="u-full-width"
-              placeholder="Hi Dave …"
-              id="exampleMessage"
-            ></textarea> -->
-            <label class="emailList">
-              <input type="checkbox" />
-              <span class="label-body">Email me updates from Co-Tracker</span>
-            </label>
-            <input class="button-primary" type="submit" value="Submit" />
+            
+            <button class="button-primary" type="submit" value="submit" id="submitButton">Submit</button>
           </form>
         </div>
 
@@ -71,5 +55,7 @@
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
