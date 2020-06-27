@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="normalize.css" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <h1 class="jumbotron">Co-Tracker</h1>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="six columns">
-          <form>
-            <div class="row">
-              <div class="six columns">
-                <label for="cityInput">City</label>
-                <input type="text" class="u-half-width" id="cityInput" placeholder="Your City Here">
-                <label for="countyInput">County</label>
-                <input type="text" class="u-half-width" id="countyInput" placeholder="Your County Here">
-                <label for="stateInput">State</label>
-                <input type="text" class="u-half-width" id="stateInput" placeholder="Your State Here">
-                
-              </div>
-              
-            </div>
-            
-            <button class="button-primary" type="submit" value="submit" id="submitButton">Submit</button>
-          </form>
-        </div>
 
-        <div class="six columns">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="skeleton.css" />
+  <link rel="stylesheet" type="text/css" href="normalize.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <h1 class="jumbotron">Co-Tracker</h1>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <form>
+          <div class="row">
             <div class="six columns">
-                <h4>
-                  nEwS!!!
-                </h4>
-                <ul id="newslist">
+              <label for="cityInput">City</label>
+              <input type="text" class="u-half-width" id="cityInput" placeholder="Your City Here">
+              <label for="countyInput">County</label>
+              <input type="text" class="u-half-width" id="countyInput" placeholder="Your County Here">
+              <label for="stateInput">State</label>
+              <input type="text" class="u-half-width" id="stateInput" placeholder="Your State Here">
+
+            </div>
+
+          </div>
+
+          <button class="button-primary" type="submit" value="submit" id="submitButton">Submit</button>
+        </form>
+      </div>
+
+      <div class="six columns">
+        <div class="six columns">
+          <h4>
+            nEwS!!!
+          </h4>
+          <ul id="newslist">
 
 
 
-                </ul>
-                <!-- <ul>
+          </ul>
+          <!-- <ul>
                   <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">Center for Disease Control Resources</li>
                   <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">World Health Organization Resources</li>
                   <li><a href="https://www.idsociety.org/public-health/COVID-19-Resource-Center/covid19-expanded-resource-center/#Workplace">
                 Infectious Disease Society of America Resources</li>
                 </ul> -->
-              </div>
-          </form>
         </div>
-      </div>
-      <div class="row">
-        <div class="six columns">
-          <img class="map" src="map.png">
-        </div>
-        <div class="six columns">
-          <img src="twitter.png" />
-        </div>
+        </form>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    <div class="row">
+      <div class="six columns">
+        <img class="map" src="map.png">
+      </div>
+      <div class="six columns">
+        <img src="twitter.png" />
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="script.js"></script>
+  <script src="./newsapi.js"></script>
+</body>
+
 </html>
