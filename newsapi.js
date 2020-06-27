@@ -5,14 +5,15 @@ let date1 = m.subtract(5, 'd').format("YYYY-MM-DD");
 let date2 = m.add(5, 'd').format("YYYY-MM-DD");
 
 function buildQueryURL() {
-    //let city = $("#city").val().trim();
-    queryURL = "https://newsapi.org/v2/everything?q=" + city + "covid-19&from=" + date1 + "&to=" + date2 + "&sortBy=popularity&pageSize=5&apiKey=" + APIKey;
+    let state = $("#stateInput").val().trim();
+    queryURL = "https://newsapi.org/v2/everything?q=" + state + "+covid-19&from=" + date1 + "&to=" + date2 + "&sortBy=popularity&pageSize=5&apiKey=" + APIKey;
     console.log(queryURL);
     //we can add to this if we have ideas for other user input to customize search
     //we can also add to the API's searched (CNN, etc) 
 }
 
 function updateNews() {
+    console.log(response);
     for (var i = 0; i < response.articles.length; i++) {
         let articleListEl = $("<ul>");
         let titleEl = $("<li>");
@@ -38,9 +39,9 @@ function updateNews() {
 }
 
 
-$("#run-search").on("click", function (event) {
-    event.preventDefault;
-    var queryURL = buildQueryURL();
+$("#submitButton").on("click", function (event) {
+    event.preventDefault();
+    queryURL = buildQueryURL();
     $.ajax({
         url: queryURL,
         method: "GET"
