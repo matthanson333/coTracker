@@ -24,6 +24,8 @@
               <input type="text" class="u-half-width" id="countyInput" placeholder="Your County Here">
               <label for="stateInput">State</label>
               <input type="text" class="u-half-width" id="stateInput" placeholder="Your State Here">
+              <label for="zipCodeInput">Zip Code</label>
+              <input type="text" class="u-half-width" id="zipCodeInput" placeholder="Your Zip Code Here">
 
             </div>
 
@@ -60,12 +62,17 @@
       <div class="six columns">
         <img src="twitter.png" />
       </div>
+      <div id="byCounty"></div>
+      <div class="six columns bingwidget" id="widgetDiv" data-type="covid19" data-market="en-us" data-language="en-us" data-location-id="/United States/"></div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
   <script src="./newsapi.js"></script>
+  <script src="https://bing.com/widget/bootstrap.answer.js" async=""></script>
+  <script src="zipCodeApi.js"></script>
+ 
 </body>
 
 </html>
