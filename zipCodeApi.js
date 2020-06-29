@@ -59,12 +59,77 @@ function countyCovidAPICall(responseData) {
 function example1Call(data) {
   console.log(data); //response data from zip code API
   // look through response data for specific data needed
-  console.log(
-    "Example 1 of respone from ajax call for state: " +
-      JSON.stringify(data.places[0].state)
-  );
+  console.log(data.places[0]["state abbreviation"].toLowerCase());
   //Type ajax call for API code below here____________________________________________
+  // Summer's Code Updated 06.27.2020
+  $(document).ready(() => {
+    //Variables
+    //SUBMIT BUTTON
+    /*Description: Button, that once pressed, provides information on city input into the search form 
+    to be displayed as current stats and reference information*/
 
+    var state = data.places[0]["state abbreviation"].toLowerCase();
+    currentCOVIDStats(state);
+    stateResources(state);
+
+    //currentCOVIDStats FUNCTION
+    /*Description: Function collects current COVID data on state provided as input 
+    and diplays on page*/
+    function currentCOVIDStats(state) {
+      $.ajax({
+        method: "GET",
+        url: `https://covidtracking.com/api/v1/states/${state}/current.json`,
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          //currentCOVIDStats Variables
+          var state = response.state;
+          var totalTested = response.totalTestsViral;
+          var totalConfirmedCases = response.positiveCasesViral;
+          var totalCurrentHospitalizations = response.hospitalizedCurrently;
+          var dailyChange = response.totalTestResultsIncrease;
+          $("#stateStatsDiv").addClass("." + state + " ");
+          $("totalTestedDiv").text("Total Tested:" + totalTested);
+          $("totalConfirmedCasesDiv").text(
+            "Total Confirmed: " + totalConfirmedCases
+          );
+          $("#totalCurrentHospitalizationsDiv").text(
+            "Hospitalizations: " + totalCurrentHospitalizations
+          );
+          $("#dailyChangeDiv").text(
+            "Daily Change (increase or descrease): " + dailyChange
+          );
+        },
+      });
+    }
+    //stateResources FUNCTION
+    /*Description: Function collects current COVID data on state provided as input 
+    and diplays on page*/
+    function stateResources(state) {
+      $.ajax({
+        method: "GET",
+        url: `https://covidtracking.com/api/v1/states/${state}/info.json`,
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          //currentWeather Variables
+          var stateName = response.name;
+          var stateNotes = response.notes;
+          var stateCurrentCOVIDSite = response.covid19Site;
+          var stateOldCOVIDSite = response.covid19SiteOld;
+          var stateTwitter = response.twitter;
+          $("#stateName").html("<h1>" + stateName + "<h1>");
+          $("#stateNotes").html("<p>" + stateNotes + "<p>");
+          $("#stateCurrentCOVIDSiteDiv")
+            .attr("href", stateCurrentCOVIDSite)
+            .text("State Site: " + stateCurrentCOVIDSite);
+          $("#stateTwitterDiv")
+            .attr("href", stateTwitter)
+            .text("Twitter Handle: " + stateTwitter);
+        },
+      });
+    }
+  });
   //______________________________Code above this live________________________________
 }
 
