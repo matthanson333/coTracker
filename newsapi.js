@@ -8,6 +8,7 @@ function buildQueryURL() {
     let state = $("#stateInput").val().trim();
     queryURL = "https://newsapi.org/v2/everything?q=" + state + "+covid-19&from=" + date1 + "&to=" + date2 + "&sortBy=popularity&pageSize=4&apiKey=" + APIKey;
     console.log(queryURL);
+    return queryURL;
     //we can add to this if we have ideas for other user input to customize search
     //we can also add to the API's searched (CNN, etc) 
 }
@@ -15,6 +16,7 @@ function buildQueryURL() {
 $("#submitButton").on("click", function (event) {
     event.preventDefault();
     queryURL = buildQueryURL();
+    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
