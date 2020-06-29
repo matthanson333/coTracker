@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Co-Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Logo -->
+    <img src="logo.png" class="center" />
+  </head>
+  <body>
+    <!-- Zipcode Input -->
+    <div class="row">
+      <div class="columns is-centered">
+        <div class="column is-one-quarter">
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-danger is rounded is-three-quarters"
+                type="text"
+                placeholder="Zipcode"
+                id="zipCodeInput"
+              />
+              <div class="buttons has-addons is-centered">
+                <button class="button is-danger is-centered" id="submitButton">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div id="byCounty"></div>
+            <div
+              class="bingwidget"
+              id="widgetDiv"
+              data-type="covid19"
+              data-market="en-us"
+              data-language="en-us"
+              data-location-id="/United States/"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+    <script src="./newsapi.js"></script>
+    <script src="https://bing.com/widget/bootstrap.answer.js" async=""></script>
+    <script src="zipCodeApi.js"></script>
+  </body>
+</html>
