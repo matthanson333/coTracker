@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
     />
+
     <link rel="stylesheet" type="text/css" href="style.css" />
     <!-- Logo -->
     <img src="logo.png" class="center" />
@@ -25,7 +26,13 @@
                 placeholder="Zipcode"
                 id="zipCodeInput"
               />
-              <div class="buttons has-addons is-centered">
+              <!-- <input
+                class="input is-danger is rounded is-three-quarters"
+                type="text"
+                placeholder="State"
+                id="stateInput"
+              /> -->
+              <div class="buttons has-addons is-centered mt-3">
                 <button class="button is-danger is-centered" id="submitBtn">
                   Submit
                 </button>
@@ -34,6 +41,25 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="covidStats" class="row">
+      <div id="stateName">
+        <h1></h1>
+      </div>
+      <div id="stateNotes"> Notes
+        <p></p>
+      </div>
+      <div id="totalTestedDiv">Total Tested: </div>
+      <div id="totalConfirmedCasesDiv">Total Cases Confirmed: </div>
+      <div id="totalCurrentHospitalizationsDiv">Hospitalizations: </div>
+      <div id="dailyChangeDiv"> Daily Change (increase or decrease):</div>
+      <div id="stateCurrentCOVIDSiteDiv">State Site: </div>
+      <div id="stateTwitterDiv">Twitter: </div>
+    </div>
+    <div class="container">
+      <ul id="newsList">
+
+      </ul>
     </div>
     <div class="container">
     
