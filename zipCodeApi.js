@@ -6,10 +6,13 @@ function zipcodeLocation(zip) {
   }).then(function (response) {
     //call functions after zipcode submit is clicked while inside zipcode AJAX API call
     countyCovidAPICall(response);
-    example1Call(response); // This is an Example function call for other API use of zippopotams zipcode API
+    covidCasesCall(response); // This is an Example function call for other API use of zippopotams zipcode API
     //add as many API calls as needed for calls that require zip code to state "NC", "North Carolina", FIPS code etc...
     //check the response data from zipcode API to see what they have to offer
     //Check example1Call below.........................................................................................
+
+    //news API call
+    newsAPICall(response);
   });
 }
 
@@ -56,7 +59,9 @@ function countyCovidAPICall(responseData) {
 }
 //Example of function below...................................
 //Any other APIs to call by clicking submit button for zipcode
-function example1Call(data) {
+
+//Summers API covid API call
+function covidCasesCall(data) {
   console.log(data); //response data from zip code API
   // look through response data for specific data needed
   console.log(data.places[0]["state abbreviation"].toLowerCase());
@@ -131,6 +136,52 @@ function example1Call(data) {
     }
   });
   //______________________________Code above this live________________________________
+}
+
+//Pauls News API call
+function newsAPICall(data) {
+  const APIKey = "73e000bec602bdab0b978b04f580bb63";
+  let queryURL = "";
+  let m = moment();
+  let date = m.subtract(7, "d").format("YYYY-MM-DD");
+  console.log(date);
+
+  function buildQueryURL() {
+    console.log(data);
+    let state = data.places[0].state;
+    queryURL =
+      "https://gnews.io/api/v3/search?q=" +
+      state +
+      "+covid-19&mindate=" +
+      date +
+      "&max=4&token=" +
+      APIKey;
+    console.log(queryURL);
+    return queryURL;
+  }
+
+  $(".listItems").remove();
+  queryURL = buildQueryURL();
+  console.log(queryURL);
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    for (var i = 0; i < response.articles.length; i++) {
+      let articleListEl = $("<ul>");
+      let titleEl = $("<li>");
+      let urlEL = $("<a>");
+      articleListEl.addClass("listItems");
+      $("#newslist").append(articleListEl);
+      titleEl.text(response.articles[i].title);
+      articleListEl.append(titleEl);
+      urlEL.attr("href", response.articles[i].url);
+      urlEL.attr("target", "_blank");
+      urlEL.text("Link to Article");
+      articleListEl.append(urlEL);
+    }
+  });
 }
 
 //onclick event from submit button
