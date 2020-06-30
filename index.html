@@ -1,66 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Co-Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <h1 class="jumbotron">Co-Tracker</h1>
+    <!-- Logo -->
+    <img src="logo.png" class="center" />
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="six columns">
-          <form>
-            <div class="row">
-              <div class="six columns">
-                <label for="cityInput">City</label>
-                <input type="text" class="u-half-width" id="cityInput" placeholder="Your City Here">
-                <label for="countyInput">County</label>
-                <input type="text" class="u-half-width" id="countyInput" placeholder="Your County Here">
-                <label for="stateInput">State</label>
-                <input type="text" class="u-half-width" id="stateInput" placeholder="Your State Here">
-                
+    <!-- Zipcode Input -->
+    <div class="row" id="zipInput">
+      <div class="columns is-centered">
+        <div class="column is-one-quarter">
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-danger is rounded is-three-quarters"
+                type="text"
+                placeholder="Zipcode"
+                id="zipCodeInput"
+              />
+              <!-- <input
+                class="input is-danger is rounded is-three-quarters"
+                type="text"
+                placeholder="State"
+                id="stateInput"
+              /> -->
+              <div class="buttons has-addons is-centered mt-3">
+                <button class="button is-danger is-centered" id="submitBtn">
+                  Submit
+                </button>
               </div>
-              
             </div>
-            
-            <button class="button-primary" type="submit" value="submit" id="submitButton">Submit</button>
-          </form>
-        </div>
-
-        <div class="six columns">
-            <div class="six columns">
-                <h4>
-                  nEwS!!!
-                </h4>
-                <ul id="newslist">
-
-
-
-                </ul>
-                <!-- <ul>
-                  <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">Center for Disease Control Resources</li>
-                  <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">World Health Organization Resources</li>
-                  <li><a href="https://www.idsociety.org/public-health/COVID-19-Resource-Center/covid19-expanded-resource-center/#Workplace">
-                Infectious Disease Society of America Resources</li>
-                </ul> -->
-              </div>
-          </form>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="six columns">
-          <img class="map" src="map.png">
-        </div>
-        <div class="six columns">
-          <img src="twitter.png" />
+    </div>
+    <div id="covidStats" class="row">
+      <div id="stateName">
+        <h1></h1>
+      </div>
+      <div id="stateNotes"> Notes
+        <p></p>
+      </div>
+      <div id="totalTestedDiv">Total Tested: </div>
+      <div id="totalConfirmedCasesDiv">Total Cases Confirmed: </div>
+      <div id="totalCurrentHospitalizationsDiv">Hospitalizations: </div>
+      <div id="dailyChangeDiv"> Daily Change (increase or decrease):</div>
+      <div id="stateCurrentCOVIDSiteDiv">State Site: </div>
+      <div id="stateTwitterDiv">Twitter: </div>
+    </div>
+    <div class="container">
+      <ul id="newsList">
+
+      </ul>
+    </div>
+    <div class="container">
+    
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div id="byCounty"></div>
+            <div
+              class="bingwidget"
+              id="widgetDiv"
+              data-type="covid19"
+              data-market="en-us"
+              data-language="en-us"
+              data-location-id="/United States/"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
+    <script src="./newsapi.js"></script>
+    <script src="https://bing.com/widget/bootstrap.answer.js" async=""></script>
+    <script src="zipCodeApi.js"></script>
   </body>
 </html>
