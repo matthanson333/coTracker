@@ -173,7 +173,7 @@ function newsAPICall(data) {
       let titleEl = $("<li>");
       let urlEL = $("<a>");
       articleListEl.addClass("listItems");
-      $("#newslist").append(articleListEl);
+      $("#newsList").append(articleListEl);
       titleEl.text(response.articles[i].title);
       articleListEl.append(titleEl);
       urlEL.attr("href", response.articles[i].url);
