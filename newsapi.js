@@ -1,20 +1,19 @@
-const APIKey = "56f71468618548868435ff8e19f0a3ac";
+const APIKey = "73e000bec602bdab0b978b04f580bb63";
 let queryURL = ""
 let m = moment();
-let date1 = m.subtract(5, 'd').format("YYYY-MM-DD");
-let date2 = m.add(5, 'd').format("YYYY-MM-DD");
+let date = m.subtract(7, 'd').format("YYYY-MM-DD");
+console.log(date);
 
 function buildQueryURL() {
     let state = $("#stateInput").val().trim();
-    queryURL = "https://newsapi.org/v2/everything?q=" + state + "+covid-19&from=" + date1 + "&to=" + date2 + "&sortBy=popularity&pageSize=4&apiKey=" + APIKey;
+    queryURL = "https://gnews.io/api/v3/search?q=" + state + "+covid-19&mindate=" + date + "&max=4&token=" + APIKey;
     console.log(queryURL);
     return queryURL;
-    //we can add to this if we have ideas for other user input to customize search
-    //we can also add to the API's searched (CNN, etc) 
 }
 
 $("#submitButton").on("click", function (event) {
     event.preventDefault();
+    $(".listItems").remove();
     queryURL = buildQueryURL();
     console.log(queryURL);
     $.ajax({
