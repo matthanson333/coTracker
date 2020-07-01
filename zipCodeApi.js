@@ -10,12 +10,10 @@ function zipcodeLocation(zip) {
     //add as many API calls as needed for calls that require zip code to state "NC", "North Carolina", FIPS code etc...
     //check the response data from zipcode API to see what they have to offer
     //Check example1Call below.........................................................................................
-
     //news API call
     newsAPICall(response);
   });
 }
-
 // Zipcode API to get latitude and longitude for covid county API
 function countyCovidAPICall(responseData) {
   //latittude and longitude values to find FIPS code for county
@@ -44,22 +42,30 @@ function countyCovidAPICall(responseData) {
     }).then(function (response) {
       $("#byCounty").empty();
       //County covid Data
+      newDiv4 = $("<div>").html(
+        response.countyName + " County, " + response.stateName
+      );
       newDiv = $("<div>").html(
-        response.actuals.cumulativeDeaths + " total deaths"
+        "Total Deaths: " + response.actuals.cumulativeDeaths
       );
       newDiv1 = $("<div>").html(
-        response.actuals.cumulativeConfirmedCases + " confirmed cases"
+        " Confirmed Cases: " + response.actuals.cumulativeConfirmedCases
       );
-      newDiv2 = $("<div>").html(response.actuals.population + " population");
+      newDiv2 = $("<div>").html("Population: " + response.actuals.population);
+      newDiv5 = $("<div>").html(
+        "Data Last Updated: " + response.lastUpdatedDate
+      );
+      $("#byCounty").append(newDiv4);
+      $("#byCounty").append(newDiv5);
+      $("#byCounty").append(newDiv2);
       $("#byCounty").append(newDiv);
       $("#byCounty").append(newDiv1);
-      $("#byCounty").append(newDiv2);
+      console.log(response);
     });
   });
 }
 //Example of function below...................................
 //Any other APIs to call by clicking submit button for zipcode
-
 //Summers API covid API call
 function covidCasesCall(data) {
   console.log(data); //response data from zip code API
@@ -72,11 +78,9 @@ function covidCasesCall(data) {
     //SUBMIT BUTTON
     /*Description: Button, that once pressed, provides information on city input into the search form 
     to be displayed as current stats and reference information*/
-
     var state = data.places[0]["state abbreviation"].toLowerCase();
     currentCOVIDStats(state);
     stateResources(state);
-
     //currentCOVIDStats FUNCTION
     /*Description: Function collects current COVID data on state provided as input 
     and diplays on page*/
@@ -137,7 +141,6 @@ function covidCasesCall(data) {
   });
   //______________________________Code above this live________________________________
 }
-
 //Pauls News API call
 function newsAPICall(data) {
   const APIKey = "73e000bec602bdab0b978b04f580bb63";
@@ -145,7 +148,6 @@ function newsAPICall(data) {
   let m = moment();
   let date = m.subtract(7, "d").format("YYYY-MM-DD");
   console.log(date);
-
   function buildQueryURL() {
     console.log(data);
     let state = data.places[0].state;
@@ -159,7 +161,6 @@ function newsAPICall(data) {
     console.log(queryURL);
     return queryURL;
   }
-
   $(".listItems").remove();
   queryURL = buildQueryURL();
   console.log(queryURL);
@@ -183,7 +184,6 @@ function newsAPICall(data) {
     }
   });
 }
-
 //onclick event from submit button
 $("#submitButton").on("click", function (event) {
   event.preventDefault();

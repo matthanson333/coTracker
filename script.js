@@ -63,6 +63,9 @@ $(document).ready(() => {
     });
   }
 });
-$("#submitBtn").click(function () {
+
+$("#submitButton").click(function () {
   $("#zipInput").hide(1000);
+  // $("#locationHeader").show(1000);
+  $(".hideDiv").show(1000);
 });
