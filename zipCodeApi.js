@@ -168,13 +168,18 @@ function newsAPICall(data) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    let header = $("<h1>");
+    header.text("News");
+    header.css({ "font-weight": "bold", "text-decoration": "underline" })
+    $("#newsList").append(header);
     for (var i = 0; i < response.articles.length; i++) {
       let articleListEl = $("<ul>");
       let titleEl = $("<li>");
       let urlEL = $("<a>");
-      articleListEl.addClass("listItems");
+      articleListEl.addClass("listItems mt-2 mb-2");
       $("#newsList").append(articleListEl);
       titleEl.text(response.articles[i].title);
+      titleEl.css("font-style", "italic");
       articleListEl.append(titleEl);
       urlEL.attr("href", response.articles[i].url);
       urlEL.attr("target", "_blank");
