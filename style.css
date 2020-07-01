@@ -8,3 +8,15 @@
 .map {
   width: 100%;
 }
+
+.box {
+  margin: 5px;
+}
+
+#locationHeader {
+  display: none;
+}
+
+.hideDiv {
+  display: none;
+}
