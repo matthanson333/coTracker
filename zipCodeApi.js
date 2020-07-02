@@ -32,6 +32,27 @@ function countyCovidAPICall(responseData) {
     //latitude and longitude location for FIPS call
     //AJAX call for covid by county API
     let countyFIPS = response.County.FIPS;
+
+    //State Widget render
+    $("#stateWidget").empty();
+    let newDiv = $("<div>");
+    newDiv.attr("class", "covid-act-now-embed");
+    newDiv.attr("data-state-id", response.State.code);
+    let newDiv1 = $("<script>");
+    newDiv1.attr("src", "https://covidactnow.org/scripts/embed.js");
+    newDiv.append(newDiv1);
+    $("#stateWidget").append(newDiv);
+
+    //County Widget render
+    $("#countyWidget").empty();
+    let newDiv2 = $("<div>");
+    newDiv2.attr("class", "covid-act-now-embed");
+    newDiv2.attr("data-fips-id", countyFIPS);
+    let newDiv3 = $("<script>");
+    newDiv3.attr("src", "https://covidactnow.org/scripts/embed.js");
+    newDiv2.append(newDiv3);
+    $("#countyWidget").append(newDiv2);
+
     let countyURL =
       "https://data.covidactnow.org/latest/us/counties/" +
       countyFIPS +
@@ -55,12 +76,13 @@ function countyCovidAPICall(responseData) {
       newDiv5 = $("<div>").html(
         "Data Last Updated: " + response.lastUpdatedDate
       );
+
       $("#byCounty").append(newDiv4);
       $("#byCounty").append(newDiv5);
       $("#byCounty").append(newDiv2);
-      $("#byCounty").append(newDiv);
       $("#byCounty").append(newDiv1);
-      console.log(response);
+      $("#byCounty").append(newDiv);
+
     });
   });
 }
