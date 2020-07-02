@@ -12,8 +12,9 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <!-- Logo -->
     <img src="logo.png" class="center" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="hideDev">
     
     <div class="column is-danger is-4 is-offset-4 notification" style="text-align: center;" id="locationHeader">
       <div display:none class="box has-text-weight-semibold" style="font-size: 2rem;">#locationHeader</div></div>
@@ -29,12 +30,6 @@
                 placeholder="Zipcode"
                 id="zipCodeInput"
               />
-              <!-- <input
-                class="input is-danger is rounded is-three-quarters"
-                type="text"
-                placeholder="State"
-                id="stateInput"
-              /> -->
               <div class="buttons has-addons is-centered mt-3">
                 <button class="button is-danger is-centered" id="submitButton">
                   Submit
@@ -47,6 +42,7 @@
     </div>
     <div class="hideDiv">
     <div class="tile is-ancestor ml-6 mr-6">
+      <!-- Bing Widget -->
       <div class="tile is-6 is-parent">
         <div class="tile is-horizontal is-child notification is-danger">
           <div
@@ -60,21 +56,17 @@
           ></div>
         </div>
       </div>
+      <!-- State Statistics -->
       <div class="tile is-parent is-6">
         <div
           class="tile is-horizontal is-child notification is-danger">
           <div id="covidStats">
           <div  class="box">
-            <!-- STATE NAME IS NOT POPULATING SEMIBOLD -->
             <h3 class="has-text-weight-semibold is-centered">STATE STATISTICS</h3>
             <div id="stateName" class="has-text-weight-semibold">
               <h1></h1>
             </div>
-            <!-- <div id="stateNotes"> -->
-              <!-- Notes -->
-              <!-- <p></p>
-            </div> -->
-            
+            <!-- News -->
             <div id="totalTestedDiv" class="hideDiv has-text-weight-semibold">Total Tested:</div>
             <div id="totalConfirmedCasesDiv" class="has-text-weight-semibold">Total Cases Confirmed:</div>
             <div id="totalCurrentHospitalizationsDiv" class="has-text-weight-semibold">Hospitalizations:</div>
@@ -83,6 +75,7 @@
             <div id="stateTwitterDiv" class="has-text-weight-semibold">Twitter:</div>
           </div>
         </div>
+        <!-- Count Statistics -->
         <div class="box" style="margin-bottom: 0;"><h3 class="has-text-weight-semibold">COUNTY STATISTICS</h3>
           <div id="byCounty"></div>
         </div>
@@ -96,91 +89,7 @@
         </div>
       </div>
     </div>
-    <!-- COVID STATS -->
 
-    <!-- END TILES -->
-
-    <!-- <div id="covidStats" class="column is-half is-right">
-          <div class="column is-half">
-            <div class="tile notification is-danger">
-              <div id="stateName">
-                <h1></h1>
-              </div>
-              <div id="stateNotes">
-                Notes
-                <p></p>
-              </div>
-
-              <div id="totalTestedDiv">Total Tested:</div>
-              <div id="totalConfirmedCasesDiv">Total Cases Confirmed:</div>
-              <div id="totalCurrentHospitalizationsDiv">Hospitalizations:</div>
-              <div id="dailyChangeDiv">
-                Daily Change (increase or decrease):
-              </div>
-              <div id="stateCurrentCOVIDSiteDiv">State Site:</div>
-              <div id="stateTwitterDiv">Twitter:</div>
-            </div>
-            <div id="byCounty" class="column is-half is-right"></div>
-            <div class="column is-half is-right">
-              <ul id="newsList"></ul>
-            </div>
-          </div>
-        </div>
-        <div class="column is-half is-right">
-          <div class="tile">
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-danger">
-                <div class="content">
-                  <p class="title">Tall tile</p>
-                  <p class="subtitle">With even more content</p>
-                  <div class="content">
-                    <!-- Content -->
-    <!-- </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="container">
-      <div class="columns">
-        <div class="column is-half is-left">
-          <div
-            class="bingwidget"
-            id="widgetDiv"
-            data-type="covid19"
-            data-market="en-us"
-            data-language="en-us"
-            data-location-id="/United States/"
-          ></div>
-        </div>
-
-        <div id="covidStats" class="column is-half is-right">
-          <div class="column is-half">
-            <div id="stateName">
-              <h1></h1>
-            </div>
-            <div id="stateNotes">
-              Notes
-              <p></p>
-            </div>
-
-            <div id="totalTestedDiv">Total Tested:</div>
-            <div id="totalConfirmedCasesDiv">Total Cases Confirmed:</div>
-            <div id="totalCurrentHospitalizationsDiv">Hospitalizations:</div>
-            <div id="dailyChangeDiv">Daily Change (increase or decrease):</div>
-            <div id="stateCurrentCOVIDSiteDiv">State Site:</div>
-            <div id="stateTwitterDiv">Twitter:</div>
-          </div>
-          <div id="byCounty" class="column is-half is-right"></div>
-          <div class="column is-half is-right">
-            <ul id="newsList"></ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
