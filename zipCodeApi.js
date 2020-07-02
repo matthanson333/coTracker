@@ -10,12 +10,10 @@ function zipcodeLocation(zip) {
     //add as many API calls as needed for calls that require zip code to state "NC", "North Carolina", FIPS code etc...
     //check the response data from zipcode API to see what they have to offer
     //Check example1Call below.........................................................................................
-
     //news API call
     newsAPICall(response);
   });
 }
-
 // Zipcode API to get latitude and longitude for covid county API
 function countyCovidAPICall(responseData) {
   //latittude and longitude values to find FIPS code for county
@@ -84,12 +82,12 @@ function countyCovidAPICall(responseData) {
       $("#byCounty").append(newDiv2);
       $("#byCounty").append(newDiv1);
       $("#byCounty").append(newDiv);
+
     });
   });
 }
 //Example of function below...................................
 //Any other APIs to call by clicking submit button for zipcode
-
 //Summers API covid API call
 function covidCasesCall(data) {
   console.log(data); //response data from zip code API
@@ -102,11 +100,9 @@ function covidCasesCall(data) {
     //SUBMIT BUTTON
     /*Description: Button, that once pressed, provides information on city input into the search form 
     to be displayed as current stats and reference information*/
-
     var state = data.places[0]["state abbreviation"].toLowerCase();
     currentCOVIDStats(state);
     stateResources(state);
-
     //currentCOVIDStats FUNCTION
     /*Description: Function collects current COVID data on state provided as input 
     and diplays on page*/
@@ -167,7 +163,6 @@ function covidCasesCall(data) {
   });
   //______________________________Code above this live________________________________
 }
-
 //Pauls News API call
 function newsAPICall(data) {
   const APIKey = "73e000bec602bdab0b978b04f580bb63";
@@ -175,7 +170,6 @@ function newsAPICall(data) {
   let m = moment();
   let date = m.subtract(7, "d").format("YYYY-MM-DD");
   console.log(date);
-
   function buildQueryURL() {
     console.log(data);
     let state = data.places[0].state;
@@ -189,7 +183,6 @@ function newsAPICall(data) {
     console.log(queryURL);
     return queryURL;
   }
-
   $(".listItems").remove();
   queryURL = buildQueryURL();
   console.log(queryURL);
@@ -198,13 +191,18 @@ function newsAPICall(data) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    let header = $("<h1>");
+    header.text("News");
+    header.css({ "font-weight": "bold", "text-decoration": "underline" })
+    $("#newsList").append(header);
     for (var i = 0; i < response.articles.length; i++) {
       let articleListEl = $("<ul>");
       let titleEl = $("<li>");
       let urlEL = $("<a>");
-      articleListEl.addClass("listItems");
+      articleListEl.addClass("listItems mt-2 mb-2");
       $("#newsList").append(articleListEl);
       titleEl.text(response.articles[i].title);
+      titleEl.css("font-style", "italic");
       articleListEl.append(titleEl);
       urlEL.attr("href", response.articles[i].url);
       urlEL.attr("target", "_blank");
@@ -213,7 +211,6 @@ function newsAPICall(data) {
     }
   });
 }
-
 //onclick event from submit button
 $("#submitButton").on("click", function (event) {
   event.preventDefault();
