@@ -193,10 +193,10 @@ function newsAPICall(data) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
-    let header = $("<h1>");
-    header.text("News");
-    header.css({ "font-weight": "bold", "text-decoration": "underline" })
-    $("#newsList").append(header);
+    /*     let header = $("<h1>");
+        header.text("News");
+        header.css({ "font-weight": "bold", "text-decoration": "underline" })
+        $("#newsList").append(header); */
     for (var i = 0; i < response.articles.length; i++) {
       let articleListEl = $("<ul>");
       let titleEl = $("<li>");
