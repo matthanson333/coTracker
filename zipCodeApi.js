@@ -1,5 +1,5 @@
 function zipcodeLocation(zip) {
-  let zipcodeToFIPSURL = "http://api.zippopotam.us/us/" + zip;
+  let zipcodeToFIPSURL = "https://api.zippopotam.us/us/" + zip;
   $.ajax({
     method: "GET",
     url: zipcodeToFIPSURL,
