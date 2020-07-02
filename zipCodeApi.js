@@ -89,17 +89,19 @@ function covidCasesCall(data) {
         method: "GET",
         url: `https://covidtracking.com/api/v1/states/${state}/current.json`,
         dataType: "json",
-        success: function (response) {
-          console.log(response);
+        success: function (res) {
+          console.log(res);
           //currentCOVIDStats Variables
-          var state = response.state;
-          var totalTested = response.totalTestsViral;
-          var totalConfirmedCases = response.positiveCasesViral;
-          var totalCurrentHospitalizations = response.hospitalizedCurrently;
-          var dailyChange = response.totalTestResultsIncrease;
+          var state = res.state;
+          var totalTested = res.totalTestsViral;
+          console.log(res.totalTestsViral);
+          var totalConfirmedCases = res.positiveCasesViral;
+          console.log("Total Confirmed Cases: " + totalConfirmedCases);
+          var totalCurrentHospitalizations = res.hospitalizedCurrently;
+          var dailyChange = res.totalTestResultsIncrease;
           $("#stateStatsDiv").addClass("." + state + " ");
-          $("totalTestedDiv").text("Total Tested:" + totalTested);
-          $("totalConfirmedCasesDiv").text(
+          $("#totalTestedDiv").text("Total Tested:" + totalTested);
+          $("#totalConfirmedCasesDiv").text(
             "Total Confirmed: " + totalConfirmedCases
           );
           $("#totalCurrentHospitalizationsDiv").text(
