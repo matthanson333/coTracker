@@ -44,6 +44,7 @@ function countyCovidAPICall(responseData) {
     $("#stateWidget").append(newDiv);
 
     //County Widget render
+    // County Data API Deprecated past October 01
     $("#countyWidget").empty();
     let newDiv2 = $("<div>");
     newDiv2.attr("class", "covid-act-now-embed");
@@ -109,7 +110,7 @@ function covidCasesCall(data) {
     function currentCOVIDStats(state) {
       $.ajax({
         method: "GET",
-        url: `https://covidtracking.com/api/v1/states/${state}/current.json`,
+        url: `https://api.covidtracking.com/v1/states/${state}/current.json`,
         dataType: "json",
         success: function (res) {
           console.log(res);
@@ -121,6 +122,8 @@ function covidCasesCall(data) {
           console.log("Total Confirmed Cases: " + totalConfirmedCases);
           var totalCurrentHospitalizations = res.hospitalizedCurrently;
           var dailyChange = res.totalTestResultsIncrease;
+          var lastUpdateDate = res.lastUpdateEt
+          console.log(lastUpdateDate);
           $("#stateStatsDiv").addClass("." + state + " ");
           $("#totalTestedDiv").text("Total Tested:" + totalTested);
           $("#totalConfirmedCasesDiv").text(
@@ -131,6 +134,9 @@ function covidCasesCall(data) {
           );
           $("#dailyChangeDiv").text(
             "Daily Change (increase or descrease): " + dailyChange
+          );
+          $("#lastUpdateDiv").text(
+            "Data Last Updated: " + lastUpdateDate
           );
         },
       });
